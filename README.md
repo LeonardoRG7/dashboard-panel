@@ -1,27 +1,29 @@
-# DashboardPlataform
+Este es el README para el proyecto de seguimiento de repositorios. A continuación, encontrarás información sobre el proyecto, cómo configurarlo y ejecutarlo, así como otros detalles importantes.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+Introducción
 
-## Development server
+Este proyecto se trata de una plataforma minimalista diseñada para proporcionar seguimiento y gestión de repositorios. Las imágenes y la iconografía utilizadas en el diseño son de uso libre y pueden ser reemplazadas según sea necesario. Se espera que se completen la mayor cantidad de requisitos posibles en el tiempo estimado para la prueba, con el fin de garantizar una verificación adecuada de las funciones.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Es importante tener en cuenta que el contexto y la aplicación fueron creados específicamente para esta prueba y no representan un caso real ni contienen información verídica.
 
-## Code scaffolding
+Contexto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+El aplicativo funciona como una herramienta de seguimiento para repositorios, permitiendo a los usuarios tener una visión clara de la información almacenada en los diversos repositorios de la compañía, así como sus configuraciones y otros elementos relevantes para cada repositorio. El sistema cuenta con un sistema de sesión y dos roles que limitan el acceso a ciertas pantallas o módulos:
 
-## Build
+- Login
+- Dashboard
+- Tabla de administración para Proyectos
+- Tabla de administración para Usuarios
+- Tabla de administración para Roles
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Tecnologías Utilizadas:
 
-## Running unit tests
+- Angular
+- Bootstrap
+- Chart.js
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Contacto
 
-## Running end-to-end tests
+Si tienes alguna pregunta o sugerencia relacionada con este proyecto, no dudes en ponerte en contacto conmigo en Leonardoriascos82@gmail.com o a través de https://leonardoriascosportafolio.netlify.app/.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+¡Gracias por tu interés en este proyecto!
