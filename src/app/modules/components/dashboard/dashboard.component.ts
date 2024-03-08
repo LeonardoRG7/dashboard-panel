@@ -3,6 +3,7 @@ import { DevelopersService } from 'src/app/core/services/developers.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { Commit } from 'src/app/core/interfaces/commit';
 import { Server } from 'src/app/core/interfaces/server';
+import { DeliveryReport } from 'src/app/core/interfaces/delivery-reports';
 
 Chart.register(...registerables);
 @Component({
@@ -20,12 +21,18 @@ export class DashboardComponent implements OnInit {
   timeUse: number = 0;
   projectDeploys: number = 0;
 
+  // Delivery data:
+  deliveryReport!: DeliveryReport;
+  deliveryPercentage: string = '';
+  deliveryCycleDate: string = '';
+
   constructor(private _developersService: DevelopersService) {}
 
   ngOnInit(): void {
     this.getNotifications();
     this.getReportsCommits();
     this.getServerDetails();
+    this.getDeliveryReports();
   }
 
   getNotifications() {
@@ -40,7 +47,7 @@ export class DashboardComponent implements OnInit {
   getReportsCommits() {
     this._developersService.getCommitsReports().subscribe((res) => {
       this.commits = res;
-      this.reportCommits();
+      this.renderReportCommits();
     });
   }
 
@@ -51,6 +58,15 @@ export class DashboardComponent implements OnInit {
       this.projectDeploys = res.deploys;
 
       this.renderServerChart();
+    });
+  }
+
+  getDeliveryReports() {
+    this._developersService.getDeliveryReports().subscribe((res) => {
+      this.deliveryReport = res;
+      this.deliveryPercentage = res.porcentaje;
+      this.deliveryCycleDate = res.cicle;
+      this.renderDeliveryChart();
     });
   }
   renderServerChart() {
@@ -81,7 +97,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  reportCommits() {
+  renderReportCommits() {
     const months = this.commits.map((commit) => commit.month);
     const feats = this.commits.map((commit) => commit.feat);
     const fixes = this.commits.map((commit) => commit.fix);
@@ -111,6 +127,56 @@ export class DashboardComponent implements OnInit {
         scales: {
           y: {
             beginAtZero: true,
+          },
+        },
+      },
+    });
+  }
+  renderDeliveryChart() {
+    const topProjectsLabels = this.deliveryReport.top_projects.map(
+      (project) => project.name
+    );
+    const topProjectsValues = this.deliveryReport.top_projects.map((project) =>
+      parseInt(project.porcentaje)
+    );
+
+    const data = {
+      labels: topProjectsLabels,
+      datasets: [
+        {
+          label: 'Top Projects',
+          data: topProjectsValues,
+          backgroundColor: [
+            '#007bff',
+            '#28a745',
+            '#ffc107',
+            '#dc3545',
+            '#17a2b8',
+            '#6610f2',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    new Chart('reportChart', {
+      type: 'bar',
+      data: data,
+      options: {
+        indexAxis: 'y',
+        elements: {
+          bar: {
+            borderWidth: 2,
+          },
+        },
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'right',
+          },
+          title: {
+            display: true,
+            text: 'Top Projects',
           },
         },
       },

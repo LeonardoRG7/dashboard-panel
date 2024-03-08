@@ -84,5 +84,18 @@
         <canvas id="piechart"></canvas>
       </div>
     </div>
+    <div class="col-12">
+      <div class="report-commits">
+        <h5 class="title-content-commits">Entregas</h5>
+        <h6 class="title-content-delivery">%{{ deliveryPercentage }}</h6>
+        <p class="subtitle-content-commits">
+          <strong> Proximo Ciclo: {{ deliveryCycleDate }} </strong> El ciclo de
+          entrega se calcula usando las fechas, estimadas de los Sptrints en
+          cada proyecto
+        </p>
+
+        <canvas id="reportChart"></canvas>
+      </div>
+    </div>
   </div>
 </div>

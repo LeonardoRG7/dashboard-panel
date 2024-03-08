@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Notification } from '../interfaces/notification';
 import { Commit } from '../interfaces/commit';
 import { Server } from '../interfaces/server';
+import { DeliveryReport } from '../interfaces/delivery-reports';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +51,7 @@ export class DevelopersService {
   }
 
   getDeliveryReports() {
-    return this._http.get<any>(`${this.apiUrl}/release_resume
+    return this._http.get<DeliveryReport>(`${this.apiUrl}/release_resume
       `);
   }
 }
