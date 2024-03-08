@@ -1,0 +1,64 @@
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.btn-create {
+  background: #0277ff;
+  color: #ffff;
+  height: 40px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+table {
+  min-width: 3200px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+tr,
+td {
+  text-align: center;
+}
+
+.devs {
+  width: 450px;
+}
+
+th {
+  padding: 25px;
+}
+
+td {
+  padding: 25px 0;
+  padding-right: 25px;
+  padding-left: 25px;
+  border-bottom: 1px solid #d0cccc;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-circle {
+  color: red;
+}
+
+.advance {
+  background: #ffc100;
+  margin: 0;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.btn-action {
+  border: 0;
+  background: transparent;
+  font-size: 1.2rem;
+}

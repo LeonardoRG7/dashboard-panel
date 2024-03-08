@@ -1,0 +1,91 @@
+<div class="content-project mb-4">
+  <h5 class="title">Creemos un nuevo usuerio</h5>
+</div>
+<form [formGroup]="userForm" class="form-container">
+  <mat-form-field class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" required />
+    <mat-error
+      *ngIf="
+        userForm.get('name')?.invalid &&
+        (userForm.get('name')?.dirty || userForm.get('name')?.touched)
+      "
+    >
+      Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Apellido</mat-label>
+    <input matInput formControlName="last_name" required />
+    <mat-error
+      *ngIf="
+        userForm.get('last_name')?.invalid &&
+        (userForm.get('last_name')?.dirty || userForm.get('last_name')?.touched)
+      "
+    >
+      last name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Rol</mat-label>
+    <input
+      matInput
+      type="number"
+      min="1"
+      max="2"
+      formControlName="rol"
+      required
+    />
+    <mat-error
+      *ngIf="
+        userForm.get('rol')?.invalid &&
+        (userForm.get('rol')?.dirty || userForm.get('rol')?.touched)
+      "
+    >
+      Rol is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Tecnologias</mat-label>
+    <mat-select formControlName="list" multiple required>
+      <mat-option
+        *ngFor="let tecnology of tecnologiesTech"
+        [value]="tecnology"
+        >{{ tecnology }}</mat-option
+      >
+    </mat-select>
+    <mat-error
+      *ngIf="
+        userForm.get('list')?.invalid &&
+        (userForm.get('list')?.dirty || userForm.get('list')?.touched)
+      "
+    >
+      List is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Area</mat-label>
+    <input matInput formControlName="area" required />
+    <mat-error
+      *ngIf="
+        userForm.get('area')?.invalid &&
+        (userForm.get('area')?.dirty || userForm.get('area')?.touched)
+      "
+    >
+      Area is required
+    </mat-error>
+  </mat-form-field>
+
+  <div class="d-flex align-items-center justify-content-end mt-5 btn-content">
+    <button type="submit" class="btn btn-primary" (click)="createUser()">
+      Submit
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Close
+    </button>
+  </div>
+</form>

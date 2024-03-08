@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<div class="projects-panel">
+  <div class="content-projects">
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="title">Usarios</h5>
+
+      <button type="button" class="btn btn-create" (click)="createUser()">
+        Agregar usuario
+      </button>
+    </div>
+
+    <div class="content-table">
+      <table>
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Rol</th>
+          <th>Tecnologias</th>
+          <th>Area</th>
+          <th>Proyectos</th>
+          <th></th>
+        </tr>
+
+        <tr *ngFor="let user of users">
+          <td>
+            <img
+              src="https://leonardoriascosportafolio.netlify.app/img/Leonardo.png"
+              alt="img user"
+              width="40"
+            />
+          </td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.rol === 1 ? "Admin" : "Dev" }}</td>
+          <td class="devs">{{ user.list }}</td>
+          <td>{{ user.area }}</td>
+          <td class="devs">Balance</td>
+          <td>
+            <button class="btn-action action-update" (click)="editUser(user)">
+              <i class="fa fa-cog text-info" aria-hidden="true"></i></button
+            ><button
+              class="btn-action action-delete"
+              (click)="deleteUser(user.id)"
+            >
+              <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

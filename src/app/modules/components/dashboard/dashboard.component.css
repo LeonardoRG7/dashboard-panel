@@ -1,0 +1,38 @@
+.content-data {
+  height: 9rem;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 17rem;
+}
+
+.project-content {
+  gap: 1rem;
+}
+
+.project-1 {
+  background: #ffdd95;
+}
+
+.project-2 {
+  background: #c5ebaa;
+}
+
+.project-3 {
+  background: #ff6868;
+}
+
+.project-4 {
+  background: #ff9843;
+}
+
+.description-panel {
+  text-align: left;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.content-dashboard {
+  margin-top: 10rem;
+}

@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="container content-dashboard">
+  <div class="row row-cols-2">
+    <div class="col">Column</div>
+    <div class="col">
+      <div class="container text-center">
+        <div class="row row-cols-2 project-content">
+          <div class="col content-data project-1">
+            <div class="d-flex flex-column description-panel">
+              <p class="title">Proyectos Registrados</p>
+              <p class="number">{{ projects }}</p>
+              <p class="description">Ultimo proyecto registrado hace 15 dias</p>
+            </div>
+          </div>
+          <div class="col content-data project-2">
+            <div class="d-flex flex-column description-panel">
+              <p class="title">Proyectos en Desarrollo</p>
+              <p class="number">{{ projectsInDeploy }}</p>
+              <p class="description">Total de avance 22.00%</p>
+            </div>
+          </div>
+          <div class="col content-data project-3">
+            <div class="d-flex flex-column description-panel">
+              <p class="title">NC's sin resolver</p>
+              <p class="number">{{ totalNcs }}</p>
+              <p class="description">Ultima NC registrada hace 1 dia</p>
+            </div>
+          </div>
+          <div class="col content-data project-4">
+            <div class="d-flex flex-column description-panel">
+              <p class="title">Cantidad de Errores</p>
+              <p class="number">{{ totalErrors }}</p>
+              <p class="description">Ultima error hace 2 horas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>

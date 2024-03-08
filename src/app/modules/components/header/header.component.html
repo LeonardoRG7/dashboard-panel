@@ -1,0 +1,88 @@
+<nav class="navbar bg-body-tertiary fixed-top px-5">
+  <div class="container-fluid">
+    <img
+      src="../../../../assets/img/icon.jpg"
+      alt="logo header"
+      class="logo-header"
+    />
+
+    <div class="d-flex content-buttons">
+      <button mat-button class="btn-notification" [matMenuTriggerFor]="menu">
+        <i class="fa fa-bell" aria-hidden="true"></i>
+        <span class="notify" *ngIf="notifications.length > 0"></span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          class="btn-menu"
+          *ngFor="let notification of notifications"
+        >
+          <i
+            [ngClass]="{
+              'fa-exclamation-triangle text-info':
+                notification.type === 'warning',
+              'fa-info-circle text-warning': notification.type === 'info',
+              'fa-times text-danger': notification.type === 'error'
+            }"
+            class="fa"
+            aria-hidden="true"
+          ></i>
+          {{ notification.details }}
+        </button>
+      </mat-menu>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="offcanvas offcanvas-start"
+        data-bs-scroll="true"
+        tabindex="-1"
+        id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel"
+      >
+        <div class="offcanvas-header">
+          <img
+            src="../../../../assets/img/icon.jpg"
+            alt="logo header"
+            class="logo-header"
+          />
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Proyectos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Usuarios</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Roles</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

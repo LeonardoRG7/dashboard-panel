@@ -1,0 +1,136 @@
+<div class="content-project">
+  <h5 class="title">Creemos un nuevo proyecto</h5>
+</div>
+<form [formGroup]="projectForm" class="form-container">
+  <mat-form-field class="full-width">
+    <mat-label>Protecto</mat-label>
+    <input matInput formControlName="project_name" required />
+    <mat-error
+      *ngIf="
+        projectForm.get('project_name')?.invalid &&
+        (projectForm.get('project_name')?.dirty ||
+          projectForm.get('project_name')?.touched)
+      "
+    >
+      Project Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Cliente</mat-label>
+    <input matInput formControlName="client" required />
+    <mat-error
+      *ngIf="
+        projectForm.get('client')?.invalid &&
+        (projectForm.get('client')?.dirty || projectForm.get('client')?.touched)
+      "
+    >
+      Client is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Repositorio</mat-label>
+    <input matInput formControlName="repo_url" required />
+    <mat-error
+      *ngIf="
+        projectForm.get('repo_url')?.invalid &&
+        (projectForm.get('repo_url')?.dirty ||
+          projectForm.get('repo_url')?.touched)
+      "
+    >
+      Repository URL is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="ci">Tiene Integracion Continua</mat-checkbox>
+
+  <mat-checkbox formControlName="cd">Tiene Despliegue Continuo</mat-checkbox>
+
+  <mat-form-field class="full-width">
+    <mat-label>Desarrolladores</mat-label>
+    <mat-select formControlName="developers" multiple required>
+      <mat-option
+        *ngFor="let developer of developerOptions"
+        [value]="developer"
+        >{{ developer }}</mat-option
+      >
+    </mat-select>
+    <mat-error
+      *ngIf="
+        projectForm.get('developers')?.invalid &&
+        (projectForm.get('developers')?.dirty ||
+          projectForm.get('developers')?.touched)
+      "
+    >
+      At least one developer is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Frontend</mat-label>
+    <mat-select formControlName="frontend_tecnology" multiple required>
+      <mat-option
+        *ngFor="let frontendTech of frontendTechnologyOptions"
+        [value]="frontendTech"
+        >{{ frontendTech }}</mat-option
+      >
+    </mat-select>
+    <mat-error
+      *ngIf="
+        projectForm.get('frontend_tecnology')?.invalid &&
+        (projectForm.get('frontend_tecnology')?.dirty ||
+          projectForm.get('frontend_tecnology')?.touched)
+      "
+    >
+      At least one frontend technology is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Backend</mat-label>
+    <mat-select formControlName="backend_tecnology" multiple required>
+      <mat-option
+        *ngFor="let backendTech of backendTechnologyOptions"
+        [value]="backendTech"
+        >{{ backendTech }}</mat-option
+      >
+    </mat-select>
+    <mat-error
+      *ngIf="
+        projectForm.get('backend_tecnology')?.invalid &&
+        (projectForm.get('backend_tecnology')?.dirty ||
+          projectForm.get('backend_tecnology')?.touched)
+      "
+    >
+      At least one backend technology is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Base de Datos</mat-label>
+    <mat-select formControlName="databases" multiple required>
+      <mat-option *ngFor="let database of databaseOptions" [value]="database">{{
+        database
+      }}</mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        projectForm.get('databases')?.invalid &&
+        (projectForm.get('databases')?.dirty ||
+          projectForm.get('databases')?.touched)
+      "
+    >
+      At least one database is required
+    </mat-error>
+  </mat-form-field>
+
+  <div class="d-flex align-items-center justify-content-end mt-5 btn-content">
+    <button type="submit" class="btn btn-primary" (click)="createProject()">
+      Submit
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      Close
+    </button>
+  </div>
+</form>

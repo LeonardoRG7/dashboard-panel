@@ -1,0 +1,83 @@
+<app-header></app-header>
+
+<div class="projects-panel">
+  <div class="content-projects">
+    <div class="d-flex align-items-center justify-content-between">
+      <h5 class="title">Lista De Proyectos Registrados</h5>
+
+      <button type="button" class="btn btn-create" (click)="createProject()">
+        Nuevo proyecto
+      </button>
+    </div>
+
+    <div class="content-table">
+      <table>
+        <tr>
+          <th>Proyecto</th>
+          <th>Cliente</th>
+          <th>Repositorio</th>
+          <th>Desarrolladores</th>
+          <th>CI</th>
+          <th>CD</th>
+          <th>Frontend</th>
+          <th>Backend</th>
+          <th>DB</th>
+          <th>Alertas</th>
+          <th>Errores</th>
+          <th>Cant. Despliegues</th>
+          <th>Avance</th>
+          <th>Reporte NC's</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+
+        <tr *ngFor="let project of projects">
+          <td>{{ project.project_name }}</td>
+          <td>{{ project.client }}</td>
+          <td>{{ project.repo_url }}</td>
+          <td class="devs">{{ project.developers }}</td>
+          <td>
+            <ng-container *ngIf="project.ci; else isFalse">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </ng-container>
+            <ng-template #isFalse>
+              <i class="fa fa-circle" aria-hidden="true"></i>
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="project.cd; else isFalse">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </ng-container>
+            <ng-template #isFalse>
+              <i class="fa fa-circle" aria-hidden="true"></i>
+            </ng-template>
+          </td>
+          <td>{{ project.frontend_tecnology }}</td>
+          <td>{{ project.backend_tecnology }}</td>
+          <td>{{ project.databases }}</td>
+          <td class="text-warning">{{ project.warning_count }}</td>
+          <td class="text-danger">{{ project.errors_count }}</td>
+          <td class="text-info">{{ project.deploy_count }}</td>
+          <td class="text-warning">{{ project.percentage_completion }}</td>
+          <td class="text-danger">{{ project.report_nc }}</td>
+          <td>
+            <p class="advance">{{ project.status }}</p>
+          </td>
+          <td>
+            <button
+              class="btn-action action-update"
+              (click)="editProject(project)"
+            >
+              <i class="fa fa-cog text-info" aria-hidden="true"></i></button
+            ><button
+              class="btn-action action-delete"
+              (click)="deleteProject(project.id)"
+            >
+              <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

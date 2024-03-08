@@ -1,0 +1,56 @@
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card-content .card {
+  width: 500px;
+  height: 450px;
+  padding: 2rem;
+  border: 0;
+  border-radius: 5px;
+}
+
+.card-content .card img {
+  width: 5rem;
+}
+
+.card-content .card .ttile {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-content .card .subtitle {
+  font-weight: 300;
+  letter-spacing: -0.2px;
+}
+
+.card-content .card .form-control {
+  padding: 12px 30px;
+  border-radius: 1px;
+}
+
+.card-content .card .btn-submit {
+  background: #0277ff;
+  color: #ffff;
+  height: 50px;
+}
+
+.card-content .card .btn-submit:hover {
+  opacity: 0.8;
+}
+
+.card-content .card .form-check-input {
+  padding: 5px;
+}
+
+.card-content .card .form-check-label,
+a {
+  font-size: 14px;
+}
+
+.card-content .card a {
+  text-decoration: none;
+}
