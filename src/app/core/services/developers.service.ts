@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
 import { Notification } from '../interfaces/notification';
+import { Commit } from '../interfaces/commit';
+import { Server } from '../interfaces/server';
 
 @Injectable({
   providedIn: 'root',
@@ -38,13 +40,13 @@ export class DevelopersService {
       `);
   }
 
-  getSeerverDetails() {
-    return this._http.get<any>(`${this.apiUrl}/cpu_report
+  getSeerverDetails(): Observable<Server> {
+    return this._http.get<Server>(`${this.apiUrl}/cpu_report
       `);
   }
 
-  getCommitsReports() {
-    return this._http.get<any>(`${this.apiUrl}/report_commits
+  getCommitsReports(): Observable<Commit[]> {
+    return this._http.get<Commit[]>(`${this.apiUrl}/report_commits
       `);
   }
 

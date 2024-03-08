@@ -4,7 +4,17 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 17rem;
+  width: 19.2rem;
+}
+
+picture {
+  max-width: 38rem;
+  max-height: 19rem;
+}
+
+.img-city {
+  width: 100%;
+  height: 100%;
 }
 
 .project-content {
@@ -27,6 +37,11 @@
   background: #ff9843;
 }
 
+.tlt-report {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .description-panel {
   text-align: left;
   padding: 10px;
@@ -35,4 +50,16 @@
 
 .content-dashboard {
   margin-top: 10rem;
+}
+
+.report-commits {
+  background: white;
+  padding: 2rem;
+  margin-top: 4rem;
+  border-radius: 20px;
+}
+
+.title-content-commits {
+  font-size: 1rem;
+  font-weight: 600;
 }

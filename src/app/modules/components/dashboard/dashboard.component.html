@@ -1,8 +1,22 @@
 <app-header></app-header>
 
 <div class="container content-dashboard">
+  <h2 class="title-dasboard">Bienvenido Carlos</h2>
+
+  <p class="subtitle-dashboard">
+    Verifica tus alertas, posees 3 alertas sub Leer!
+  </p>
+
   <div class="row row-cols-2">
-    <div class="col">Column</div>
+    <div class="col">
+      <picture>
+        <img
+          src="../../../../assets/img/world.png"
+          alt="world img"
+          class="img-city"
+        />
+      </picture>
+    </div>
     <div class="col">
       <div class="container text-center">
         <div class="row row-cols-2 project-content">
@@ -37,7 +51,38 @@
         </div>
       </div>
     </div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div class="col">
+      <div class="report-commits">
+        <h5 class="title-content-commits">Reportes De Commits</h5>
+
+        <p class="subtitle-content-commits">
+          Todas de commits realizados por cada mes diferenciando entre los tags
+          de Ajustes(fix) y Caractereisticas(feat)
+        </p>
+
+        <div class="container text-center">
+          <div class="row row-cols-2 my-4 w-75">
+            <div class="col mb-2 tlt-report">Tiempo de Uso</div>
+            <div class="col">{{ timeUse }}%</div>
+            <div class="col mb-2 tlt-report">Proyectos Desplegados</div>
+            <div class="col">{{ projectDeploys }}</div>
+          </div>
+        </div>
+
+        <canvas id="linechart"></canvas>
+      </div>
+    </div>
+    <div class="col">
+      <div class="report-commits">
+        <h5 class="title-content-commits">Detalles Del Servidor</h5>
+
+        <p class="subtitle-content-commits">
+          The total number of sessions within the date range. It is the period
+          time a user is at actively engaged with your website, page or app etc.
+        </p>
+
+        <canvas id="piechart"></canvas>
+      </div>
+    </div>
   </div>
 </div>
