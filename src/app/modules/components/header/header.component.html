@@ -40,13 +40,31 @@
         class="btn-notification"
         [matMenuTriggerFor]="logoutMenu"
       >
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+      </button>
+      <mat-menu #logoutMenu="matMenu">
+        <button mat-menu-item class="btn-menu" *ngFor="let task of tasks">
+          <mat-checkbox
+            [checked]="task.check"
+            [ngStyle]="{ 'text-decoration': task.hide ? 'underline' : 'none' }"
+          >
+            {{ task.description }}</mat-checkbox
+          >
+        </button>
+      </mat-menu>
+
+      <button
+        mat-button
+        class="btn-notification"
+        [matMenuTriggerFor]="taskMenu"
+      >
         <img
           src="https://leonardoriascosportafolio.netlify.app/img/Leonardo.png"
           alt="img user"
           class="img-user"
         />
       </button>
-      <mat-menu #logoutMenu="matMenu">
+      <mat-menu #taskMenu="matMenu">
         <button mat-menu-item class="btn-menu" (click)="logout()">
           Logout
         </button>

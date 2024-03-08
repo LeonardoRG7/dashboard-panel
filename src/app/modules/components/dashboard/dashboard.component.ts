@@ -4,6 +4,8 @@ import { Chart, registerables } from 'node_modules/chart.js';
 import { Commit } from 'src/app/core/interfaces/commit';
 import { Server } from 'src/app/core/interfaces/server';
 import { DeliveryReport } from 'src/app/core/interfaces/delivery-reports';
+import { UsersService } from 'src/app/core/services/users.service';
+import { Notification } from 'src/app/core/interfaces/notification';
 
 Chart.register(...registerables);
 @Component({
@@ -26,16 +28,26 @@ export class DashboardComponent implements OnInit {
   deliveryPercentage: string = '';
   deliveryCycleDate: string = '';
 
+  // Notifications data:
+  notifications: Notification[] = [];
+
   constructor(private _developersService: DevelopersService) {}
 
   ngOnInit(): void {
-    this.getNotifications();
+    this.getTopCharts();
     this.getReportsCommits();
     this.getServerDetails();
     this.getDeliveryReports();
+    this.getNotifications();
   }
 
   getNotifications() {
+    this._developersService.getNotificaction().subscribe((res) => {
+      this.notifications = res;
+    });
+  }
+
+  getTopCharts() {
     this._developersService.getTopCharts().subscribe((res) => {
       (this.projects = res.projects),
         (this.projectsInDeploy = res.projects_dev);
@@ -69,6 +81,7 @@ export class DashboardComponent implements OnInit {
       this.renderDeliveryChart();
     });
   }
+
   renderServerChart() {
     const times = this.server.time.map((res) => res.time);
     const values = this.server.time.map((res) => res.value);
@@ -132,6 +145,7 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
+
   renderDeliveryChart() {
     const topProjectsLabels = this.deliveryReport.top_projects.map(
       (project) => project.name

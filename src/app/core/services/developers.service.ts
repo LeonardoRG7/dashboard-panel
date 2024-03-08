@@ -7,6 +7,7 @@ import { Commit } from '../interfaces/commit';
 import { Server } from '../interfaces/server';
 import { DeliveryReport } from '../interfaces/delivery-reports';
 import { Rol } from '../interfaces/rol';
+import { Task } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root',
@@ -29,8 +30,8 @@ export class DevelopersService {
     `);
   }
 
-  getTask() {
-    return this._http.get<any>(`${this.apiUrl}/todos
+  getTask(): Observable<Task[]> {
+    return this._http.get<Task[]>(`${this.apiUrl}/todos
     `);
   }
 
