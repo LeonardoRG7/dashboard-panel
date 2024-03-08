@@ -7,11 +7,15 @@
     />
 
     <div class="d-flex content-buttons">
-      <button mat-button class="btn-notification" [matMenuTriggerFor]="menu">
+      <button
+        mat-button
+        class="btn-notification"
+        [matMenuTriggerFor]="menuNotifications"
+      >
         <i class="fa fa-bell" aria-hidden="true"></i>
         <span class="notify" *ngIf="notifications.length > 0"></span>
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #menuNotifications="matMenu">
         <button
           mat-menu-item
           class="btn-menu"
@@ -28,6 +32,23 @@
             aria-hidden="true"
           ></i>
           {{ notification.details }}
+        </button>
+      </mat-menu>
+
+      <button
+        mat-button
+        class="btn-notification"
+        [matMenuTriggerFor]="logoutMenu"
+      >
+        <img
+          src="https://leonardoriascosportafolio.netlify.app/img/Leonardo.png"
+          alt="img user"
+          class="img-user"
+        />
+      </button>
+      <mat-menu #logoutMenu="matMenu">
+        <button mat-menu-item class="btn-menu" (click)="logout()">
+          Logout
         </button>
       </mat-menu>
 
@@ -63,22 +84,40 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
+              <a
+                class="nav-link active"
+                routerLink="/dashboard"
+                aria-current="page"
+                href="#"
                 >Dashboard</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
+              <a
+                class="nav-link active"
+                routerLink="/projects"
+                aria-current="page"
+                href="#"
                 >Proyectos</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
+              <a
+                class="nav-link active"
+                routerLink="users"
+                aria-current="page"
+                href="#"
                 >Usuarios</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Roles</a>
+              <a
+                class="nav-link active"
+                routerLink="/roles"
+                aria-current="page"
+                href="#"
+                >Roles</a
+              >
             </li>
           </ul>
         </div>

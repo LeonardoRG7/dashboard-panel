@@ -2,6 +2,11 @@
   width: 4rem;
 }
 
+.img-user {
+  width: 1.5rem;
+  border-radius: 50%;
+}
+
 .btn-notification {
   background: none;
   border: none;
@@ -9,8 +14,16 @@
   padding: 0;
 }
 
+a {
+  color: #000 !important;
+}
+
+a:hover {
+  color: #0277ff !important;
+}
+
 .content-buttons {
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .btn-menu {
