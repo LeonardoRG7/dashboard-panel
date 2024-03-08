@@ -28,6 +28,7 @@ import { HeaderComponent } from './modules/components/header/header.component';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { RolsComponent } from './modules/components/rols/rols.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatIconModule } from '@angular/material/icon';
     CreateUserPreviewComponent,
     UsersComponent,
     HeaderComponent,
+    RolsComponent,
   ],
   imports: [
     BrowserModule,

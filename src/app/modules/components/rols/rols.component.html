@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="container" style="margin: 7rem auto">
+  <h1 class="title">Roles</h1>
+
+  <div class="d-flex justify-content-center" style="gap: 5rem">
+    <div class="card" style="width: 18rem" *ngFor="let rol of rols">
+      <img
+        src="../../../../assets/img/user.png"
+        class="card-img-top"
+        alt="user photo"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ rol.name }}</h5>
+        <p class="card-text">
+          {{
+            rol.id === "1"
+              ? "I am the administrator, I can navigate between the options and I can edit and delete users and projects."
+              : "I am the dev, I can only navigate through the options"
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

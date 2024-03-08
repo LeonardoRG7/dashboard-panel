@@ -5,6 +5,7 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { DashboardComponent } from './modules/components/dashboard/dashboard.component';
 import { ProjectsComponent } from './modules/components/projects/projects.component';
 import { UsersComponent } from './modules/components/users/users.component';
+import { RolsComponent } from './modules/components/rols/rols.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+  },
+  {
+    path: 'roles',
+    component: RolsComponent,
   },
   {
     path: '**',

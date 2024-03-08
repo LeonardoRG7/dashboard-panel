@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+  padding-bottom: 5rem;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.card-title {
+  font-size: 1rem;
+  color: #000;
+  font-weight: 900;
+}
