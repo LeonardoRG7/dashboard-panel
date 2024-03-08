@@ -54,7 +54,7 @@ export class ProjectsComponent implements OnInit {
     if (id) {
       this._projectsService.deleteProjects(id).subscribe((res) => {
         this.ngOnInit();
-        this._toastr.success('Proyecto creado con éxito!');
+        this._toastr.success('Proyecto eliminado con éxito!');
       });
     } else {
       console.error('ID is undefined or null');

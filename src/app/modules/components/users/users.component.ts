@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
+  userId: string | undefined;
 
   constructor(
     private _userService: UsersService,
@@ -53,7 +54,7 @@ export class UsersComponent implements OnInit {
     if (id) {
       this._userService.deleteUsers(id).subscribe((res) => {
         this.ngOnInit();
-        this._toastr.success('Usario creado con éxito!');
+        this._toastr.success('Usario eliminado con éxito!');
       });
     } else {
       console.error('ID is undefined or null');

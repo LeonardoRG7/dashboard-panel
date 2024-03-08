@@ -1574,24 +1574,6 @@
       "status": "En Desarrollo"
     },
     {
-      "id": "86",
-      "project_name": "Etiam Imperdiet Dictum LLC",
-      "repo_url": "https://",
-      "client": "Nulla Eu Associates",
-      "developers": "Alvaro Eduardo Zapata|Breyner Albarracín Lozada|Maria del Pilar Muñoz Casañas|Joan Alexis Cordoba Narvaez",
-      "ci": true,
-      "cd": true,
-      "frontend_tecnology": "React|Angular|VueJS",
-      "backend_tecnology": ".Net, Java",
-      "databases": "PosgresSQL|SQLServer",
-      "errors_count": 44,
-      "warning_count": 9,
-      "deploy_count": 14,
-      "percentage_completion": 97,
-      "report_nc": 261,
-      "status": "En Desarrollo"
-    },
-    {
       "id": "87",
       "project_name": "Nunc Ullamcorper Limited",
       "repo_url": "https://",
@@ -1950,28 +1932,18 @@
   ],
   "users": [
     {
-      "id": "1"
-    },
-    {
-      "id": "2"
-    },
-    {
-      "id": "3",
       "name": "Ali",
       "last_name": "Barlow",
-      "url_photo": "",
       "rol": 1,
-      "list": "React|React-Native|VueJS|Python|NodeJS|.Net|Angular|SQLServer",
-      "area": "Staff"
+      "url_photo": "https://leonardoriascosportafolio.netlify.app/img/Leonardo.png",
+      "id": "3"
     },
     {
-      "id": "4",
       "name": "Whilemina",
       "last_name": "George",
-      "url_photo": "",
       "rol": 1,
-      "list": "SQLServer|Python|NodeJS|React-Native|VueJS|.Net|Angular|Java|React",
-      "area": "Staff"
+      "url_photo": "https://leonardoriascosportafolio.netlify.app/img/Leonardo.png",
+      "id": "4"
     },
     {
       "id": "5",
@@ -2829,25 +2801,23 @@
       "area": "Staff"
     },
     {
-      "id": "100",
-      "name": "David",
-      "last_name": "Cabrera",
-      "url_photo": "",
-      "rol": 1,
-      "list": "React-Native|VueJS|React|SQLServer|Java|Angular",
-      "area": "Soporte"
-    },
-    {
-      "id": "c3d5",
-      "name": "    padding-left: 25px;",
-      "last_name": "    padding-left: 25px;",
+      "id": "1fc9",
+      "name": "Leonardo prueba",
+      "last_name": "Leonardo prueba",
       "rol": 1,
       "url_photo": "https://leonardoriascosportafolio.netlify.app/img/Leonardo.png"
     },
     {
-      "id": "e056",
-      "name": "fedgf",
-      "last_name": "fedgf",
+      "id": "acb3",
+      "name": "preueba2",
+      "last_name": "preueba2",
+      "rol": 1,
+      "url_photo": "https://leonardoriascosportafolio.netlify.app/img/Leonardo.png"
+    },
+    {
+      "id": "06b5",
+      "name": "aedrsdgfg",
+      "last_name": "aedrsdgfg",
       "rol": 1,
       "url_photo": "https://leonardoriascosportafolio.netlify.app/img/Leonardo.png"
     }

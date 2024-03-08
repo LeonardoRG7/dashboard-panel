@@ -22,7 +22,7 @@ export class CreateProjectPreviewComponent implements OnInit {
     'Angular',
   ];
   backendTechnologyOptions: string[] = ['.Net', 'Java', 'Python', 'NodeJs'];
-  databaseOptions: string[] = ['SQLServer', 'MongoDB', 'PostgresSQL'];
+  databaseOptions: string[] = ['SQLServer', 'MongoDB', 'PosgresSQL'];
   projectId: string | null;
 
   constructor(
@@ -30,7 +30,6 @@ export class CreateProjectPreviewComponent implements OnInit {
     private _toastr: ToastrService,
     private _projectService: ProjectsService,
     public dialogRef: MatDialogRef<CreateProjectPreviewComponent>,
-    private aRouter: ActivatedRoute,
 
     @Inject(MAT_DIALOG_DATA)
     public project: { project: Project; projectId: string | null }
@@ -59,12 +58,16 @@ export class CreateProjectPreviewComponent implements OnInit {
       project_name: this.projectForm.get('project_name')?.value,
       repo_url: this.projectForm.get('repo_url')?.value,
       client: this.projectForm.get('client')?.value,
-      developers: this.projectForm.get('developers')?.value,
+      developers: this.projectForm.get('developers')?.value.join('|'),
       ci: this.projectForm.get('ci')?.value,
       cd: this.projectForm.get('cd')?.value,
-      frontend_tecnology: this.projectForm.get('frontend_tecnology')?.value,
-      backend_tecnology: this.projectForm.get('backend_tecnology')?.value,
-      databases: this.projectForm.get('databases')?.value,
+      frontend_tecnology: this.projectForm
+        .get('frontend_tecnology')
+        ?.value.join('|'),
+      backend_tecnology: this.projectForm
+        .get('backend_tecnology')
+        ?.value.join('|'),
+      databases: this.projectForm.get('databases')?.value.join('|'),
       errors_count: 0,
       warning_count: 0,
       deploy_count: 0,
@@ -82,7 +85,6 @@ export class CreateProjectPreviewComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-          this.projectForm.reset();
         }
       );
     } else {
@@ -95,7 +97,6 @@ export class CreateProjectPreviewComponent implements OnInit {
           },
           (error) => {
             console.log(error);
-            this.projectForm.reset();
           }
         );
       } else {
@@ -106,16 +107,22 @@ export class CreateProjectPreviewComponent implements OnInit {
 
   isUpdate() {
     if (this.projectId !== null) {
+      const project = this.project.project;
+
       this.projectForm.patchValue({
-        project_name: this.project.project.project_name,
-        client: this.project.project.client,
-        repo_url: this.project.project.repo_url,
-        ci: this.project.project.ci,
-        cd: this.project.project.cd,
-        developers: this.project.project.developers,
-        frontend_tecnology: this.project.project.frontend_tecnology.split('|'),
-        backend_tecnology: this.project.project.backend_tecnology.split('|'),
-        databases: this.project.project.databases.split('|'),
+        project_name: project.project_name,
+        client: project.client,
+        repo_url: project.repo_url,
+        ci: project.ci,
+        cd: project.cd,
+        developers: project.developers.split('|').map((dev) => dev.trim()),
+        frontend_tecnology: project.frontend_tecnology
+          .split('|')
+          .map((tech) => tech.trim()),
+        backend_tecnology: project.backend_tecnology
+          .split(',')
+          .map((tech) => tech.trim()),
+        databases: project.databases.split('|').map((db) => db.trim()),
       });
     }
   }
