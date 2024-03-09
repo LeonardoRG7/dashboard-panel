@@ -28,4 +28,4 @@ Si tienes alguna pregunta o sugerencia relacionada con este proyecto, no dudes e
 
 ¡Gracias por tu interés en este proyecto!
 
-Link de produccion: https://dashboard-panel-ol.netlify.app/
+Link de produccion: https://dashboard-panel-five.vercel.app/
