@@ -23,6 +23,8 @@ export class DevelopersService {
     );
   }
 
+  //  Con observable hacemos peticiones async, y devolvemos un observable de nuestra peticion
+
   // TODO: API’s Generales
 
   getNotificaction(): Observable<Notification[]> {
