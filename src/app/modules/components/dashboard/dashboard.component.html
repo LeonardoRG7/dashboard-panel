@@ -13,8 +13,22 @@
         <img
           src="../../../../assets/img/world.png"
           alt="world img"
+          [style.background-color]="backgroundColor"
           class="img-city"
         />
+        <img
+          *ngIf="iconWeather"
+          [src]="'http://openweathermap.org/img/wn/' + iconWeather + '.png'"
+          alt="Weather Icon"
+          class="icon-weather"
+        />
+        <h6 class="temperature" *ngIf="temperature !== ''">
+          {{ temperature }}C
+        </h6>
+        <h4 class="city" *ngIf="nameCity !== ''">
+          {{ nameCity }} <br />
+          Valle
+        </h4>
       </picture>
     </div>
     <div class="col">

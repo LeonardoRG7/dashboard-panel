@@ -4,8 +4,8 @@ import { Chart, registerables } from 'node_modules/chart.js';
 import { Commit } from 'src/app/core/interfaces/commit';
 import { Server } from 'src/app/core/interfaces/server';
 import { DeliveryReport } from 'src/app/core/interfaces/delivery-reports';
-import { UsersService } from 'src/app/core/services/users.service';
 import { Notification } from 'src/app/core/interfaces/notification';
+import { WeatherService } from 'src/app/core/services/weather.service';
 
 Chart.register(...registerables);
 @Component({
@@ -14,10 +14,13 @@ Chart.register(...registerables);
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  // Projects data:
   projects: number = 0;
   projectsInDeploy: number = 0;
   totalNcs: number = 0;
   totalErrors: number = 0;
+
+  // Report Commits data:
   commits: Commit[] = [];
   server!: Server;
   timeUse: number = 0;
@@ -31,7 +34,16 @@ export class DashboardComponent implements OnInit {
   // Notifications data:
   notifications: Notification[] = [];
 
-  constructor(private _developersService: DevelopersService) {}
+  // Weather
+  backgroundColor: string = '';
+  iconWeather: string = '';
+  nameCity: string = '';
+  temperature: string = '';
+
+  constructor(
+    private _developersService: DevelopersService,
+    private _weatherService: WeatherService
+  ) {}
 
   ngOnInit(): void {
     this.getTopCharts();
@@ -39,12 +51,78 @@ export class DashboardComponent implements OnInit {
     this.getServerDetails();
     this.getDeliveryReports();
     this.getNotifications();
+    this.getWeatherByCity();
   }
 
   getNotifications() {
     this._developersService.getNotificaction().subscribe((res) => {
       this.notifications = res;
     });
+  }
+
+  getWeatherByCity() {
+    // Llamar al servicio para obtener el clima de la ciudad de 'Cali'
+    this._weatherService.getWeatherForCity('Cali').subscribe((res) => {
+      // Extraer datos relacionados con el clima
+      const weatherData = this.extractWeatherData(res);
+
+      // Extraer datos relacionados con la fecha y hora
+      const dateTimeData = this.extractDateTimeData(res);
+
+      // Asignar los datos extraídos a las variables de la clase
+      this.iconWeather = weatherData.icon; // Icono del clima
+      this.temperature = weatherData.temperature; // Temperatura
+      this.nameCity = weatherData.cityName; // Nombre de la ciudad
+
+      // Calcular y asignar el color de fondo
+      this.backgroundColor = this.calculateBackgroundColor(dateTimeData);
+    });
+  }
+
+  // Extraer datos relacionados con el clima de la respuesta de la API
+  private extractWeatherData(res: any): {
+    icon: string;
+    temperature: string;
+    cityName: string;
+  } {
+    const { icon } = res.list[0].weather[0]; // Icono del clima
+    const { temp } = res.list[0].main; // Temperatura en Kelvin
+    const cityName = res.list[0].name; // Nombre de la ciudad
+    const temperature = (temp - 273.15).toFixed(2); // Convertir de Kelvin a Celsius y redondear a dos decimales
+
+    return { icon, temperature, cityName };
+  }
+
+  // Extraer datos relacionados con la fecha y hora de la respuesta de la API
+  private extractDateTimeData(res: any): {
+    utcHours: number;
+    localHours: number;
+    weatherDescription: string;
+  } {
+    const { description: weatherDescription } = res.list[0].weather[0]; // Descripción del clima
+    const { lon } = res.list[0].coord; // Longitud de la ciudad
+    const utcHours = new Date().getUTCHours(); // Hora UTC actual
+    const localHours = utcHours + lon / 15; // Calcular la hora local en función de la longitud
+
+    return { utcHours, localHours, weatherDescription };
+  }
+
+  // Calcular el color de fondo en función de los datos de fecha y hora
+  private calculateBackgroundColor(dateTimeData: {
+    localHours: number;
+    weatherDescription: string;
+  }): string {
+    const { localHours, weatherDescription } = dateTimeData;
+    const isDaytime = localHours >= 6 && localHours < 18; // Verificar si es de día
+    const isClearOrFewClouds =
+      weatherDescription.includes('clear') ||
+      weatherDescription.includes('few clouds'); // Verificar si está despejado o hay pocas nubes
+
+    if (isDaytime) {
+      return isClearOrFewClouds ? '#FFFF00' : '#FFA500'; // Color amarillo si está despejado, de lo contrario, color naranja
+    } else {
+      return isClearOrFewClouds ? '#00008B' : '#000000'; // Color azul oscuro si está despejado, de lo contrario, negro
+    }
   }
 
   getTopCharts() {
