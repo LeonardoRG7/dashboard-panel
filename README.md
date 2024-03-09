@@ -27,3 +27,5 @@ Contacto
 Si tienes alguna pregunta o sugerencia relacionada con este proyecto, no dudes en ponerte en contacto conmigo en Leonardoriascos82@gmail.com o a través de https://leonardoriascosportafolio.netlify.app/.
 
 ¡Gracias por tu interés en este proyecto!
+
+Link de produccion: https://dashboard-panel-ol.netlify.app/
